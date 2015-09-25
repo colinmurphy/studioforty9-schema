@@ -24,12 +24,11 @@ class StudioForty9_Schema_Block_Product_Information extends Mage_Core_Block_Temp
         $image = $this->_getImageFromProduct($product);
         $image = (!$image) ? $this->_getImageFromGallery($product) : $image;
         $image = trim($image);
-        if (!$image) {
-            return '';
-        }
+        if (!$image) return '';
 
         $url = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);
-        return $url . 'catalog/product' . $image;
+
+        return $url . 'catalog/product/' . $image;
     }
 
     /**
@@ -42,7 +41,8 @@ class StudioForty9_Schema_Block_Product_Information extends Mage_Core_Block_Temp
     private function _getImageFromProduct(Mage_Catalog_Model_Product $product)
     {
         $image = $product->getImage();
-        if (!$image || $image === 'no_selection') {
+
+        if (!$image && $image === 'no_selection') {
             return '';
         }
 
@@ -70,5 +70,4 @@ class StudioForty9_Schema_Block_Product_Information extends Mage_Core_Block_Temp
 
         return $image->getFile();
     }
-
 }
