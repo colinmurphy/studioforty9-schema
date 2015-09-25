@@ -1,0 +1,34 @@
+<?php
+/** @var $this StudioForty9_Schema_Block_Product_Grouped */
+$_currency_code = $this->getCurrencyCode();
+$_currency_symbol = $this->getCurrencySymbol($_currency_code);
+$_products = $this->getAssociatedProduct();
+?>
+<div class="product-schema hide" itemscope itemtype="http://schema.org/Product" style="display: none;">
+
+    <?php echo $this->getChildHtml('information'); ?>
+
+    <div itemprop="offers" itemscope itemtype="http://schema.org/AggregateOffer">
+        <?php 
+        /** @var Mage_Catalog_Model_Product $_item */
+        foreach ($_products as $_item) :
+        ?>
+            <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                <span itemprop="name"><?php echo $_item->getName(); ?></span>
+                <span itemprop="priceCurrency" content="<?php echo $_currency_code; ?>"><?php echo $_currency_symbol; ?></span>
+                <span itemprop="price" content="<?php echo $this->getPrice($_item); ?>"><?php echo $this->getPrice($_item); ?></span>
+                <a itemprop="url" href="<?php echo $_item->getProductUrl(false); ?>" title="<?php echo $_item->getName(); ?>"><?php echo $_item->getName(); ?></a>
+                <?php if ($_item->isSaleable()): ?>
+                    <link itemprop="availability" href="http://schema.org/InStock" />
+                <?php else : ?>
+                    <link itemprop="availability" href="http://schema.org/OutOfStock" />
+                <?php endif; ?>
+            </div>
+        <?php endforeach; ?>
+
+        <span itemprop="lowPrice"><?php echo $_currency_symbol . $this->getLowestPrice(); ?></span>
+        <?php echo $this->__('to') ?>
+        <span itemprop="highPrice"><?php echo $_currency_symbol . $this->getHighestPrice(); ?></span>
+
+    </div>
+</div>

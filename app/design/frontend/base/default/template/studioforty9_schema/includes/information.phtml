@@ -1,0 +1,20 @@
+<?php
+/** @var $this StudioForty9_Schema_Block_Product_Information  */
+/** @var Mage_Catalog_Model_Product $_product */
+$_product = $this->getProduct();
+$_image = $this->getImageFile($_product);
+$_name = $_product->getName();
+$_description = $_product->getDescription();
+$_url = $_product->getProductUrl(false);
+$_category = $_product->getCategory();
+?>
+<span itemprop="name"><?php echo $_name ?></span>
+<div itemprop="description"><?php echo $_description; ?></div>
+<div itemprop="sku"><?php echo $_product->getSku(); ?></div>
+<a itemprop="url" href="<?php echo $_url; ?>" title="<?php echo $_name ?>"><?php echo $_name ?></a>
+<?php if ($_category) : ?>
+    <div itemprop="category"><?php echo $_category->getName(); ?></div>
+<?php endif; ?>
+<?php if ($_image) : ?>
+    <img itemprop="image" src="<?php echo $_image; ?>" alt="<?php echo $_name ?>" />
+<?php endif; ?>

@@ -1,0 +1,24 @@
+<?php
+/** @var $this StudioForty9_Schema_Block_Product */
+/** @var Mage_Catalog_Model_Product $_product */
+$_product = $this->getProduct();
+$_currency_code = $this->getCurrencyCode();
+$_currency_symbol = $this->getCurrencySymbol($_currency_code);
+$_price = $this->getPrice($_product);
+?>
+<div class="product-schema hide" itemscope itemtype="http://schema.org/Product" style="display: none;">
+
+    <?php echo $this->getChildHtml('information'); ?>
+
+    <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+        <span itemprop="priceCurrency" content="<?php echo $_currency_code; ?>"><?php echo $_currency_symbol; ?></span>
+        <span itemprop="price" content="<?php echo $_price; ?>"><?php echo $_price; ?></span>
+        <?php if($_product->isAvailable()): ?>
+            <link itemprop="availability" href="http://schema.org/InStock" />
+        <?php else : ?>
+            <link itemprop="availability" href="http://schema.org/OutOfStock" />
+        <?php endif; ?>
+    </div>
+
+    <?php echo $this->getChildHtml('ratings'); ?>
+</div>
