@@ -3,7 +3,7 @@
     <modules>
         <StudioForty9_Schema>
             <active>true</active>
-            <codePool>local</codePool>
+            <codePool>community</codePool>
         </StudioForty9_Schema>
     </modules>
 </config>
