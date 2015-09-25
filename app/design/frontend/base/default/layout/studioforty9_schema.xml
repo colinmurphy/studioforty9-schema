@@ -1,1 +1,13 @@
 <?xml version="1.0"?>
+<layout version="0.1.0">
+    <PRODUCT_TYPE_simple>
+        <reference name="before_body_end">
+            <block type="studioforty9_schema/product" name="studioforty9.schema.product" template="studioforty9_schema/simple.phtml"/>
+        </reference>
+    </PRODUCT_TYPE_simple>
+    <PRODUCT_TYPE_grouped>
+        <reference name="before_body_end">
+            <block type="studioforty9_schema/product_grouped" name="studioforty9.schema.product" template="studioforty9_schema/grouped.phtml" />
+        </reference>
+    </PRODUCT_TYPE_grouped>
+</layout>

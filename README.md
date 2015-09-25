@@ -2,10 +2,10 @@
 
 This will add hidden schema tags to your product pages.
 
-# 1. Installation
+## 1. Requirements
+The main page templates must have the block **before_body_end** in order for the module to add the additional HTML to your page.
 
-**Requirements**
-On your product page you need to have the block **product.info.additional** in order for the module to add the additional HTML to your page.
+## 2. Installation
 
 In your composer file you would add the following:
 
@@ -29,7 +29,11 @@ In your composer file you would add the following:
          }
      }
 
-# 2. TODO
+# 3. Testing
+
+You can test to check if the schema tags are correct here - [https://developers.google.com/structured-data/testing-tool/](https://developers.google.com/structured-data/testing-tool/)
+
+# 4. TODO
 
 - Ratings
 - Configurable Product
