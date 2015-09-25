@@ -15,52 +15,49 @@ class StudioForty9_Schema_Block_Product extends Mage_Core_Block_Template
     /**
      * Sets the product
      *
-     * @return $this|bool
+     * @return $this
      */
     protected function _beforeToHtml()
     {
-        $_product = $this->getProduct();
-        if (!$_product) {
+        $product = $this->getProduct();
+        if (!$product) {
             $this->setTemplate('');
             return $this;
         }
 
         if (! $this->getChild('information')) {
-            $_block = Mage::getBlockSingleton('studioforty9_schema/product_information');
-            $_block->setProduct($_product);
-            $_block->setTemplate('studioforty9_schema/includes/information.phtml');
-            $this->setChild('information', $_block);
+            $block = Mage::getBlockSingleton('studioforty9_schema/product_information');
+            $block->setProduct($product);
+            $block->setTemplate('studioforty9_schema/includes/information.phtml');
+            $this->setChild('information', $block);
         }
+        
+        return $this;
 
     }
 
     /**
      * Gets a product
      *
-     * @return Mage_Catalog_Model_Product|mixed
+     * @return Mage_Catalog_Model_Product|false
      */
     public function getProduct()
     {
-        $_product = $this->getData('product');
-        if ($_product) {
-            return $_product;
+        if ($this->hasData('product')) {
+            return $this->getData('product');
         }
-
-        $_product = Mage::registry('current_product');
-        if (!$_product) {
-            return false;
-        }
-        return $_product;
+        $this->setData('product', Mage::registry('current_product'));
+        return $this->getData('product');
     }
 
     /**
-     * @param Mage_Catalog_Model_Product $_product
+     * @param Mage_Catalog_Model_Product $product
      *
      * @return float
      */
-    public function getPrice(Mage_Catalog_Model_Product $_product)
+    public function getPrice(Mage_Catalog_Model_Product $product)
     {
-        return number_format($_product->getFinalPrice(), 2, '.', '');
+        return number_format($product->getFinalPrice(), 2, '.', '');
     }
 
     /**
@@ -72,14 +69,14 @@ class StudioForty9_Schema_Block_Product extends Mage_Core_Block_Template
     }
 
     /**
-     * @param $_currency_code
+     * @param $currencyCode
      *
      * @return string
      */
-    public function getCurrencySymbol($_currency_code)
+    public function getCurrencySymbol($currencyCode)
     {
         return Mage::app()->getLocale()
-            ->currency($_currency_code)
+            ->currency($currencyCode)
             ->getSymbol();
     }
 

@@ -1,8 +1,8 @@
 <?php
 /** @var $this StudioForty9_Schema_Block_Product_Grouped */
-$_currency_code = $this->getCurrencyCode();
-$_currency_symbol = $this->getCurrencySymbol($_currency_code);
-$_products = $this->getAssociatedProduct();
+$currency_code = $this->getCurrencyCode();
+$currency_symbol = $this->getCurrencySymbol($currency_code);
+$products = $this->getAssociatedProduct();
 ?>
 <div class="product-schema hide" itemscope itemtype="http://schema.org/Product" style="display: none;">
 
@@ -10,15 +10,15 @@ $_products = $this->getAssociatedProduct();
 
     <div itemprop="offers" itemscope itemtype="http://schema.org/AggregateOffer">
         <?php 
-        /** @var Mage_Catalog_Model_Product $_item */
-        foreach ($_products as $_item) :
+        /** @var Mage_Catalog_Model_Product $item */
+        foreach ($products as $item) :
         ?>
             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                <span itemprop="name"><?php echo $_item->getName(); ?></span>
-                <span itemprop="priceCurrency" content="<?php echo $_currency_code; ?>"><?php echo $_currency_symbol; ?></span>
-                <span itemprop="price" content="<?php echo $this->getPrice($_item); ?>"><?php echo $this->getPrice($_item); ?></span>
-                <a itemprop="url" href="<?php echo $_item->getProductUrl(false); ?>" title="<?php echo $_item->getName(); ?>"><?php echo $_item->getName(); ?></a>
-                <?php if ($_item->isSaleable()): ?>
+                <span itemprop="name"><?php echo $item->getName(); ?></span>
+                <span itemprop="priceCurrency" content="<?php echo $currency_code; ?>"><?php echo $currency_symbol; ?></span>
+                <span itemprop="price" content="<?php echo $this->getPrice($item); ?>"><?php echo $this->getPrice($item); ?></span>
+                <a itemprop="url" href="<?php echo $item->getProductUrl(false); ?>" title="<?php echo $item->getName(); ?>"><?php echo $item->getName(); ?></a>
+                <?php if ($item->isSaleable()): ?>
                     <link itemprop="availability" href="http://schema.org/InStock" />
                 <?php else : ?>
                     <link itemprop="availability" href="http://schema.org/OutOfStock" />
@@ -26,9 +26,9 @@ $_products = $this->getAssociatedProduct();
             </div>
         <?php endforeach; ?>
 
-        <span itemprop="lowPrice"><?php echo $_currency_symbol . $this->getLowestPrice(); ?></span>
+        <span itemprop="lowPrice"><?php echo $currency_symbol . $this->getLowestPrice(); ?></span>
         <?php echo $this->__('to') ?>
-        <span itemprop="highPrice"><?php echo $_currency_symbol . $this->getHighestPrice(); ?></span>
+        <span itemprop="highPrice"><?php echo $currency_symbol . $this->getHighestPrice(); ?></span>
 
     </div>
 </div>
