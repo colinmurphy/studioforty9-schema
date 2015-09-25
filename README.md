@@ -1,0 +1,40 @@
+# StudioForty9 Magento Schema Module
+
+This will add hidden schema tags to your product pages.
+
+# 1. Installation
+
+**Requirements**
+On your product page you need to have the block **product.info.additional** in order for the module to add the additional HTML to your page.
+
+In your composer file you would add the following:
+
+     {
+         "repositories": [
+             {
+                 "type": "composer",
+                 "url": "http://packages.firegento.com"
+             },
+             {
+                 "url": "https://github.com/colinmurphy/studioforty9-schema.git",
+                 "type": "git"
+             }
+         ],
+         "require": {
+             "magento-hackathon/magento-composer-installer": "*",
+             "colinmurphy/studioforty9-schema": "dev-master"
+         },
+         "extra": {
+             "magento-root-dir": "./"
+         }
+     }
+
+# 2. TODO
+
+- Ratings
+- Configurable Product
+- Virtual Products
+- Downloadable Products
+- Bundle Products
+- CMS pages
+- Category Pages

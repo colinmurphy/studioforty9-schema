@@ -1,72 +1,68 @@
 <?php
 
 /**
- * Schema Block
+ * Grouped Product
  *
- * Class StudioForty9_Schema_Block_Product
+ * Class StudioForty9_Schema_Block_Product_Grouped
  *
  * @category  StudioForty9
  * @package   Schema
  * @author    Colin Murphy <colin@studioforty9.com>
  * @copyright 2015 StudioForty9
  */
-class StudioForty9_Schema_Block_Product extends Mage_Core_Block_Template
+class StudioForty9_Schema_Block_Product_Grouped
+    extends StudioForty9_Schema_Block_Product
 {
     /**
-     * Sets the product
+     * Get Associated Products
      *
-     * @return $this|bool
+     * @return false|array
      */
-    protected function _beforeToHtml()
+    public function getAssociatedProduct()
     {
-        $_product = $this->getProduct();
-        if (!$_product) {
-            $this->setTemplate('');
+        if (!$this->getData('associated_products')) {
+            $_products = $this->getProduct()->getTypeInstance(true)
+                ->getAssociatedProducts($this->getProduct());
+
+            $this->setAssociatedProducts($_products);
         }
+        return $this->getData('associated_products');
     }
 
     /**
-     * Gets a product
+     * This gets the lowest price
      *
-     * @return Mage_Catalog_Model_Product|mixed
+     * @return float|string
      */
-    public function getProduct()
+    public function getLowestPrice()
     {
-        $_product = $this->getData('product');
-        if ($_product) {
-            return $_product;
+        $_lowestPrice = '0.00';
+        foreach ($this->getAssociatedProduct() as $_item) {
+            $_price = $this->getPrice($_item);
+            if ($_lowestPrice == '0.00' || $_lowestPrice > $_price) {
+                $_lowestPrice = $_price;
+            }
         }
 
-        $_product = Mage::registry('current_product');
-        if (!$_product) {
-            return false;
-        }
-        return $_product;
+        return $_lowestPrice;
     }
 
     /**
-     * Gets the image file
+     * This gets the highest price
      *
-     * @param Mage_Catalog_Model_Product $_product
-     *
-     * @return bool|string
+     * @return float|string
      */
-    public function getImageFile(Mage_Catalog_Model_Product $_product)
+    public function getHighestPrice()
     {
-        $_image = $_product->getImage();
-        if (! $_image || $_image == 'no_selection')
-        {
-            $_image = $_product->getMediaGalleryImages()->getFirstItem();
-            if (! $_image) {
-                return false;
-            }
-            $_image = $_image->getFile();
-            if (! $_image) {
-                return false;
+        $_highestPrice = '0.00';
+        foreach ($this->getAssociatedProduct() as $_item) {
+            $_price = $this->getPrice($_item);
+            if ($_highestPrice == '0.00' || $_highestPrice < $_price) {
+                $_highestPrice = $_price;
             }
         }
-        return Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)
-        . 'catalog/product' . $_image;
+
+        return $_highestPrice;
     }
 
 }

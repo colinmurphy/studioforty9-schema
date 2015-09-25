@@ -1,68 +1,40 @@
 <?php
 
 /**
- * Schema Block
+ * Information Block
  *
- * Class StudioForty9_Schema_Block_Product
+ * Class StudioForty9_Schema_Block_Product_Information
  *
  * @category  StudioForty9
  * @package   Schema
  * @author    Colin Murphy <colin@studioforty9.com>
  * @copyright 2015 StudioForty9
  */
-class StudioForty9_Schema_Block_Product_Grouped
-    extends StudioForty9_Schema_Block_Product
+class StudioForty9_Schema_Block_Product_Information
+    extends Mage_Core_Block_Template
 {
     /**
-     * Get Associated Products
+     * Gets the image file
      *
-     * @return false|array
-     */
-    public function getAssociatedProduct()
-    {
-        if (!$this->getData('associated_products')) {
-            $_products = $this->getProduct()->getTypeInstance(true)
-                ->getAssociatedProducts($this->getProduct());
-
-            $this->setAssociatedProducts($_products);
-        }
-        return $this->getData('associated_products');
-    }
-
-    /**
-     * This gets the lowest price
+     * @param Mage_Catalog_Model_Product $_product
      *
-     * @return float|string
+     * @return bool|string
      */
-    public function getLowestPrice()
+    public function getImageFile(Mage_Catalog_Model_Product $_product)
     {
-        $_lowestPrice = '0.00';
-        foreach ($this->getAssociatedProduct() as $_item) {
-            $_price = $this->getPrice($_item);
-            if ($_lowestPrice == '0.00' || $_lowestPrice > $_price) {
-                $_lowestPrice = $_price;
+        $_image = $_product->getImage();
+        if (! $_image || $_image == 'no_selection')
+        {
+            $_image = $_product->getMediaGalleryImages()->getFirstItem();
+            if (! $_image) {
+                return false;
+            }
+            $_image = $_image->getFile();
+            if (! $_image) {
+                return false;
             }
         }
-
-        return $_lowestPrice;
+        return Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)
+        . 'catalog/product' . $_image;
     }
-
-    /**
-     * This gets the highest price
-     *
-     * @return float|string
-     */
-    public function getHighestPrice()
-    {
-        $_highestPrice = '0.00';
-        foreach ($this->getAssociatedProduct() as $_item) {
-            $_price = $this->getPrice($_item);
-            if ($_highestPrice == '0.00' || $_highestPrice < $_price) {
-                $_highestPrice = $_price;
-            }
-        }
-
-        return $_highestPrice;
-    }
-
 }

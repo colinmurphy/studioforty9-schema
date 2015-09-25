@@ -1,0 +1,45 @@
+{
+  "name": "colinmurphy/studioforty9-schema",
+  "description": "StudioForty9 Magento Schema Module",
+  "type": "magento-module",
+  "license": "BSD-3-Clause",
+  "homepage": "https://github.com/colinmurphy/studioforty9-schema",
+  "keywords": [
+    "magento",
+    "schema",
+    "markup"
+  ],
+  "authors": [
+    {
+      "name": "Colin Murphy",
+      "email": "colin@studioforty9.com",
+      "homepage": "http://www.studioforty9.com/",
+      "role": "developer"
+    }
+  ],
+  "source": {
+    "url": "https://github.com/colinmurphy/studioforty9-schema.git",
+    "type": "git",
+    "reference": "origin/master"
+  },
+  "extra": {
+    "map": [
+      [
+        "app/code/community/StudioForty9/Schema",
+        "app/code/community/StudioForty9/Schema"
+      ],
+      [
+        "app/design/frontend/base/default/layout/studioforty9_schema.xml",
+        "app/design/frontend/base/default/layout/studioforty9_schema.xml"
+      ],
+      [
+        "app/design/frontend/base/default/template/studioforty9_schema",
+        "app/design/frontend/base/default/template/studioforty9_schema"
+      ],
+      [
+        "app/etc/modules/StudioForty9_Schema.xml",
+        "app/etc/modules/StudioForty9_Schema.xml"
+      ]
+    ]
+  }
+}

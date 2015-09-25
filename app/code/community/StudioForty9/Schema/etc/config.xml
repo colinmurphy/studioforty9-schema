@@ -17,4 +17,13 @@
             </studioforty9_schema>
         </helpers>
     </global>
+    <frontend>
+        <layout>
+            <updates>
+                <studioforty9_schema>
+                    <file>studioforty9_schema.xml</file>
+                </studioforty9_schema>
+            </updates>
+        </layout>
+    </frontend>
 </config>
