@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <StudioForty9_Schema>
+            <active>true</active>
+            <codePool>local</codePool>
+        </StudioForty9_Schema>
+    </modules>
+</config>
