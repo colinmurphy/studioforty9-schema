@@ -29,6 +29,7 @@ $products = $this->getAssociatedProducts();
         <span itemprop="lowPrice"><?php echo $currency_symbol . $this->getLowestPrice(); ?></span>
         <?php echo $this->__('to') ?>
         <span itemprop="highPrice"><?php echo $currency_symbol . $this->getHighestPrice(); ?></span>
-
     </div>
+
+    <?php echo $this->getChildHtml('additional'); ?>
 </div>

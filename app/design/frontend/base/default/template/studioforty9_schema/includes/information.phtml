@@ -3,8 +3,8 @@
 /** @var Mage_Catalog_Model_Product $_product */
 $_product = $this->getProduct();
 $_image = $this->getImageFile($_product);
-$_name = $_product->getName();
-$_description = $_product->getDescription();
+$_name = $this->escapeHtml($_product->getName());
+$_description = $this->escapeHtml($_product->getDescription());
 $_url = $_product->getProductUrl(false);
 $_category = $_product->getCategory();
 ?>

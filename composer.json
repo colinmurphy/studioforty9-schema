@@ -21,25 +21,5 @@
     "url": "https://github.com/colinmurphy/studioforty9-schema.git",
     "type": "git",
     "reference": "origin/master"
-  },
-  "extra": {
-    "map": [
-      [
-        "app/code/community/StudioForty9/Schema",
-        "app/code/community/StudioForty9/Schema"
-      ],
-      [
-        "app/design/frontend/base/default/layout/studioforty9_schema.xml",
-        "app/design/frontend/base/default/layout/studioforty9_schema.xml"
-      ],
-      [
-        "app/design/frontend/base/default/template/studioforty9_schema",
-        "app/design/frontend/base/default/template/studioforty9_schema"
-      ],
-      [
-        "app/etc/modules/StudioForty9_Schema.xml",
-        "app/etc/modules/StudioForty9_Schema.xml"
-      ]
-    ]
   }
 }
