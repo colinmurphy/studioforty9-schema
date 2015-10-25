@@ -3,14 +3,14 @@
 /**
  * Schema Block
  *
- * Class StudioForty9_Schema_Block_Product
+ * Class Studioforty9_Schema_Block_Product
  *
  * @category  StudioForty9
  * @package   Schema
  * @author    Colin Murphy <colin@studioforty9.com>
  * @copyright 2015 StudioForty9
  */
-class StudioForty9_Schema_Block_Product extends Mage_Core_Block_Template
+class Studioforty9_Schema_Block_Product extends Mage_Core_Block_Template
 {
     /**
      * Sets the product

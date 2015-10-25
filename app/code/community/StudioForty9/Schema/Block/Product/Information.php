@@ -3,14 +3,14 @@
 /**
  * Information Block
  *
- * Class StudioForty9_Schema_Block_Product_Information
+ * Class Studioforty9_Schema_Block_Product_Information
  *
  * @category  StudioForty9
  * @package   Schema
  * @author    Colin Murphy <colin@studioforty9.com>
  * @copyright 2015 StudioForty9
  */
-class StudioForty9_Schema_Block_Product_Information extends Mage_Core_Block_Template
+class Studioforty9_Schema_Block_Product_Information extends Mage_Core_Block_Template
 {
     /**
      * Gets the image file

@@ -3,14 +3,14 @@
 /**
  * Grouped Product
  *
- * Class StudioForty9_Schema_Block_Product_Grouped
+ * Class Studioforty9_Schema_Block_Product_Grouped
  *
  * @category  StudioForty9
  * @package   Schema
  * @author    Colin Murphy <colin@studioforty9.com>
  * @copyright 2015 StudioForty9
  */
-class StudioForty9_Schema_Block_Product_Grouped extends StudioForty9_Schema_Block_Product
+class Studioforty9_Schema_Block_Product_Grouped extends Studioforty9_Schema_Block_Product
 {
     /**
      * Get the products associated with this grouped product.
