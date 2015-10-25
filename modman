@@ -2,5 +2,5 @@ app/design/frontend/base/default/layout/studioforty9_schema.xml                 
 app/design/frontend/base/default/template/studioforty9_schema/grouped.phtml     app/design/frontend/base/default/template/studioforty9_schema/grouped.phtml
 app/design/frontend/base/default/template/studioforty9_schema/includes/         app/design/frontend/base/default/template/studioforty9_schema/includes/
 app/design/frontend/base/default/template/studioforty9_schema/simple.phtml      app/design/frontend/base/default/template/studioforty9_schema/simple.phtml
-app/etc/modules/StudioForty9_Schema.xml                                         app/etc/modules/StudioForty9_Schema.xml
-app/code/community/StudioForty9/Schema/                                         app/code/community/StudioForty9/Schema/
+app/etc/modules/Studioforty9_Schema.xml                                         app/etc/modules/Studioforty9_Schema.xml
+app/code/community/Studioforty9/Schema/                                         app/code/community/Studioforty9/Schema/
