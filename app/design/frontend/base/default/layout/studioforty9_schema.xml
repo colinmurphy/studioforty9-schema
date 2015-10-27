@@ -1,12 +1,5 @@
 <?xml version="1.0"?>
 <layout version="0.1.0">
-    <PRODUCT_TYPE_simple>
-        <reference name="content">
-            <block type="studioforty9_schema/product" name="studioforty9.schema.product" after="-" template="studioforty9_schema/simple.phtml">
-                <block type="core/text_list" name="studioforty9.schema.product.additional" as="additional"/>
-            </block>
-        </reference>
-    </PRODUCT_TYPE_simple>
     <PRODUCT_TYPE_grouped>
         <reference name="content">
             <block type="studioforty9_schema/product_grouped" name="studioforty9.schema.product" after="-" template="studioforty9_schema/grouped.phtml">
@@ -21,4 +14,17 @@
             </block>
         </reference>
     </PRODUCT_TYPE_configurable>
+    <PRODUCT_TYPE_simple>
+        <update handle="studioforty9_schema_product" />
+    </PRODUCT_TYPE_simple>
+    <PRODUCT_TYPE_virtual>
+        <update handle="studioforty9_schema_product" />
+    </PRODUCT_TYPE_virtual>
+    <studioforty9_schema_product>
+        <reference name="content">
+            <block type="studioforty9_schema/product" name="studioforty9.schema.product" after="-" template="studioforty9_schema/simple.phtml">
+                <block type="core/text_list" name="studioforty9.schema.product.additional" as="additional"/>
+            </block>
+        </reference>
+    </studioforty9_schema_product>
 </layout>

@@ -30,11 +30,9 @@ In your composer file you would add the following:
 
 You can test to check if the schema tags are correct here - [https://developers.google.com/structured-data/testing-tool/](https://developers.google.com/structured-data/testing-tool/)
 
-# 4. TODO
+# 3. TODO
 
-- Ratings
-- Virtual Products
 - Downloadable Products
 - Bundle Products
-- CMS pages
-- Category Pages
+- Tier Pricing
+- Reviews
