@@ -1,0 +1,45 @@
+<?php
+/** @var $this StudioForty9_Schema_Block_Product_Configurable */
+$currency_code = $this->getCurrencyCode();
+$products = $this->getAssociatedProducts();
+$currency_symbol = $this->getCurrencySymbol($currency_code);
+?>
+<div class="product-schema hide" itemscope itemtype="http://schema.org/Product" style="display: none;">
+
+    <?php echo $this->getChildHtml('information'); ?>
+
+    <div itemprop="offers" itemscope itemtype="http://schema.org/AggregateOffer">
+        <?php 
+        /** @var array $item */
+        foreach ($products as $id => $attributes) :
+            foreach ($attributes['options'] as $attrId => $item) :
+                $product = Mage::getModel('catalog/product')->load($item['products']['0']);
+                $product = Mage::getModel('catalog/product')->getCollection()
+                    ->addAttributeToFilter('entity_id', $item['products'])
+                    ->addAttributeToSelect(array('name', 'url_key'))
+                    ->getFirstItem();
+                ?>
+                <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                    <span itemprop="name"><?php echo $product->getName(); ?></span>
+                    <span itemprop="priceCurrency" content="<?php echo $currency_code; ?>"><?php echo $currency_symbol; ?></span>
+                    <span itemprop="price" content="<?php echo $this->getPrice($item); ?>"><?php echo $this->getPrice($item); ?></span>
+                    <a itemprop="url" href="<?php echo $product->getProductUrl(false); ?>" title="<?php echo $product->getName(); ?>"><?php echo $product->getName(); ?></a>
+                    <?php
+                    if ($product->isSaleable()): ?>
+                        <link itemprop="availability" href="http://schema.org/InStock" />
+                    <?php else : ?>
+                        <link itemprop="availability" href="http://schema.org/OutOfStock" />
+                    <?php endif;
+                    ?>
+                </div>
+                <?php
+            endforeach;
+        endforeach;
+        ?>
+        <span itemprop="lowPrice"><?php echo $currency_symbol . $this->getLowestPrice(); ?></span>
+        <?php echo $this->__('to') ?>
+        <span itemprop="highPrice"><?php echo $currency_symbol . $this->getHighestPrice(); ?></span>
+    </div>
+
+    <?php echo $this->getChildHtml('additional'); ?>
+</div>

@@ -13,7 +13,7 @@
 class Studioforty9_Schema_Block_Product_Configurable extends Studioforty9_Schema_Block_Product_Grouped
 {
     /**
-     * Get the products associated with this grouped product.
+     * Get the products associated for this configurable giproduct.
      *
      * @return array|false
      */
