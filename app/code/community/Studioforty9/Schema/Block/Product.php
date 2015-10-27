@@ -51,13 +51,23 @@ class Studioforty9_Schema_Block_Product extends Mage_Core_Block_Template
     }
 
     /**
+     * @param mixed $item
+     *
+     * @return float
+     */
+    public function getPrice($item)
+    {
+        return $this->formatPrice($item->getPrice());
+    }
+
+    /**
      * @param Mage_Catalog_Model_Product $product
      *
      * @return float
      */
-    public function getPrice(Mage_Catalog_Model_Product $product)
+    public function formatPrice($price)
     {
-        return number_format($product->getFinalPrice(), 2, '.', '');
+        return number_format($price, 2, '.', '');
     }
 
     /**

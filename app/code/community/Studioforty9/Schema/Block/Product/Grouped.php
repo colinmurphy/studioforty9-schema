@@ -23,10 +23,10 @@ class Studioforty9_Schema_Block_Product_Grouped extends Studioforty9_Schema_Bloc
             if (!$this->getProduct()) {
                 return array();
             }
-            $_products = $this->getProduct()
+            $products = $this->getProduct()
                 ->getTypeInstance(true)
                 ->getAssociatedProducts($this->getProduct());
-            $this->setData('associated_products', $_products);
+            $this->setData('associated_products', $products);
         }
 
         return $this->getData('associated_products');
@@ -39,15 +39,15 @@ class Studioforty9_Schema_Block_Product_Grouped extends Studioforty9_Schema_Bloc
      */
     public function getLowestPrice()
     {
-        $_lowestPrice = 0.00;
-        foreach ($this->getAssociatedProducts() as $_item) {
-            $_price = (float) $this->getPrice($_item);
-            if ($_lowestPrice == 0.00 || $_lowestPrice > $_price) {
-                $_lowestPrice = $_price;
+        $lowestPrice = 0.00;
+        foreach ($this->getAssociatedProducts() as $item) {
+            $price = (float) $this->getPrice($item);
+            if ($lowestPrice == 0.00 || $lowestPrice > $price) {
+                $lowestPrice = $price;
             }
         }
 
-        return $_lowestPrice;
+        return $lowestPrice;
     }
 
     /**
@@ -57,14 +57,14 @@ class Studioforty9_Schema_Block_Product_Grouped extends Studioforty9_Schema_Bloc
      */
     public function getHighestPrice()
     {
-        $_highestPrice = 0.00;
-        foreach ($this->getAssociatedProducts() as $_item) {
-            $_price = (float) $this->getPrice($_item);
-            if ($_highestPrice == 0.00 || $_highestPrice < $_price) {
-                $_highestPrice = $_price;
+        $highestPrice = 0.00;
+        foreach ($this->getAssociatedProducts() as $item) {
+            $price = (float) $this->getPrice($item);
+            if ($highestPrice == 0.00 || $highestPrice < $price) {
+                $highestPrice = $price;
             }
         }
 
-        return $_highestPrice;
+        return $highestPrice;
     }
 }
