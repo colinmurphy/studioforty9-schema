@@ -23,9 +23,7 @@ class Studioforty9_Schema_Block_Product_Grouped extends Studioforty9_Schema_Bloc
             if (!$this->getProduct()) {
                 return array();
             }
-            $products = $this->getProduct()
-                ->getTypeInstance(true)
-                ->getAssociatedProducts($this->getProduct());
+            $products = $this->getProduct()->getTypeInstance(true)->getAssociatedProducts($this->getProduct());
             $this->setData('associated_products', $products);
         }
 
@@ -41,7 +39,7 @@ class Studioforty9_Schema_Block_Product_Grouped extends Studioforty9_Schema_Bloc
     {
         $lowestPrice = 0.00;
         foreach ($this->getAssociatedProducts() as $item) {
-            $price = (float) $this->getPrice($item);
+            $price = (float)$this->getPrice($item);
             if ($lowestPrice == 0.00 || $lowestPrice > $price) {
                 $lowestPrice = $price;
             }
@@ -59,7 +57,7 @@ class Studioforty9_Schema_Block_Product_Grouped extends Studioforty9_Schema_Bloc
     {
         $highestPrice = 0.00;
         foreach ($this->getAssociatedProducts() as $item) {
-            $price = (float) $this->getPrice($item);
+            $price = (float)$this->getPrice($item);
             if ($highestPrice == 0.00 || $highestPrice < $price) {
                 $highestPrice = $price;
             }

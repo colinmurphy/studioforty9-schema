@@ -22,18 +22,19 @@ class Studioforty9_Schema_Block_Product extends Mage_Core_Block_Template
         $product = $this->getProduct();
         if (!$product) {
             $this->setTemplate('');
+
             return $this;
         }
 
-        if (! $this->getChild('information')) {
+        if (!$this->getChild('information')) {
+            /** @var Studioforty9_Schema_Block_Product_Information $block */
             $block = Mage::getBlockSingleton('studioforty9_schema/product_information');
             $block->setProduct($product);
             $block->setTemplate('studioforty9_schema/includes/information.phtml');
             $this->setChild('information', $block);
         }
-        
-        return $this;
 
+        return $this;
     }
 
     /**
@@ -47,6 +48,7 @@ class Studioforty9_Schema_Block_Product extends Mage_Core_Block_Template
             return $this->getData('product');
         }
         $this->setData('product', Mage::registry('current_product'));
+
         return $this->getData('product');
     }
 
@@ -85,9 +87,6 @@ class Studioforty9_Schema_Block_Product extends Mage_Core_Block_Template
      */
     public function getCurrencySymbol($currencyCode)
     {
-        return Mage::app()->getLocale()
-            ->currency($currencyCode)
-            ->getSymbol();
+        return Mage::app()->getLocale()->currency($currencyCode)->getSymbol();
     }
-
 }

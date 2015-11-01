@@ -13,10 +13,10 @@ $price = $this->getPrice($product);
     <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
         <span itemprop="priceCurrency" content="<?php echo $currency_code; ?>"><?php echo $currency_symbol; ?></span>
         <span itemprop="price" content="<?php echo $price; ?>"><?php echo $price; ?></span>
-        <?php if($product->isAvailable()): ?>
-            <link itemprop="availability" href="http://schema.org/InStock" />
+        <?php if ($product->isAvailable()): ?>
+            <link itemprop="availability" href="http://schema.org/InStock"/>
         <?php else : ?>
-            <link itemprop="availability" href="http://schema.org/OutOfStock" />
+            <link itemprop="availability" href="http://schema.org/OutOfStock"/>
         <?php endif; ?>
     </div>
 

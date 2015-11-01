@@ -9,19 +9,23 @@ $products = $this->getAssociatedProducts();
     <?php echo $this->getChildHtml('information'); ?>
 
     <div itemprop="offers" itemscope itemtype="http://schema.org/AggregateOffer">
-        <?php 
+        <?php
         /** @var Mage_Catalog_Model_Product $item */
         foreach ($products as $item) :
-        ?>
+
+            $name = Mage::helper('core')->escapeHtml($item->getName());
+            $url = $item->getProductUrl(false);
+            $price = $this->getPrice($item);
+            ?>
             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                <span itemprop="name"><?php echo $item->getName(); ?></span>
+                <span itemprop="name"><?php echo $name; ?></span>
                 <span itemprop="priceCurrency" content="<?php echo $currency_code; ?>"><?php echo $currency_symbol; ?></span>
-                <span itemprop="price" content="<?php echo $this->getPrice($item); ?>"><?php echo $this->getPrice($item); ?></span>
-                <a itemprop="url" href="<?php echo $item->getProductUrl(false); ?>" title="<?php echo $item->getName(); ?>"><?php echo $item->getName(); ?></a>
+                <span itemprop="price" content="<?php echo $price; ?>"><?php echo $price; ?></span>
+                <a itemprop="url" href="<?php echo $url; ?>" title="<?php echo $name; ?>"><?php echo $name; ?></a>
                 <?php if ($item->isSaleable()): ?>
-                    <link itemprop="availability" href="http://schema.org/InStock" />
+                    <link itemprop="availability" href="http://schema.org/InStock"/>
                 <?php else : ?>
-                    <link itemprop="availability" href="http://schema.org/OutOfStock" />
+                    <link itemprop="availability" href="http://schema.org/OutOfStock"/>
                 <?php endif; ?>
             </div>
         <?php endforeach; ?>

@@ -80,7 +80,7 @@ class Studioforty9_Schema_Block_Product_Configurable extends Studioforty9_Schema
                 }
             }
         }
+
         return $highestPrice;
     }
-
 }

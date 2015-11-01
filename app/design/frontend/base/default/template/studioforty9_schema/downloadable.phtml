@@ -1,0 +1,52 @@
+<?php
+/** @var $this StudioForty9_Schema_Block_Product_Downloadable */
+$currency_code = $this->getCurrencyCode();
+$products = $this->getDownloadableProducts();
+$product = $this->getProduct();
+$price = $product->getFinalPrice();
+$currency_symbol = $this->getCurrencySymbol($currency_code);
+?>
+<div class="product-schema hide" itemscope itemtype="http://schema.org/Product" style="display: none;">
+
+    <?php echo $this->getChildHtml('information'); ?>
+
+    <div itemprop="offers" itemscope itemtype="http://schema.org/AggregateOffer">
+
+        <span itemprop="priceCurrency" content="<?php echo $currency_code; ?>"><?php echo $currency_symbol; ?></span>
+        <span itemprop="price" content="<?php echo $price; ?>"><?php echo $price; ?></span>
+        <?php if($product->isAvailable()): ?>
+            <link itemprop="availability" href="http://schema.org/InStock" />
+        <?php else : ?>
+            <link itemprop="availability" href="http://schema.org/OutOfStock" />
+        <?php endif; ?>
+
+        <?php
+        /** @var Mage_Downloadable_Model_Link */
+        foreach ($products as $link) {
+            $price = $this->getPrice($link);
+            $title = Mage::helper('core')->escapeHtml($link->getTitle());
+            $url = $product->getProductUrl(false);
+            ?>
+            <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                <span itemprop="name"><?php echo $title; ?></span>
+                <span itemprop="priceCurrency" content="<?php echo $currency_code; ?>"><?php echo $currency_symbol; ?></span>
+                <span itemprop="price" content="<?php echo $price; ?>"><?php echo $price; ?></span>
+                <a itemprop="url" href="<?php echo $url; ?>" title="<?php echo $title; ?>"><?php echo $title; ?></a>
+                <?php
+                if ($product->isSaleable()): ?>
+                    <link itemprop="availability" href="http://schema.org/InStock"/>
+                <?php else : ?>
+                    <link itemprop="availability" href="http://schema.org/OutOfStock"/>
+                <?php endif;
+                ?>
+            </div>
+            <?php
+        }
+        ?>
+        <span itemprop="lowPrice"><?php echo $currency_symbol . $this->getLowestPrice(); ?></span>
+        <?php echo $this->__('to') ?>
+        <span itemprop="highPrice"><?php echo $currency_symbol . $this->getHighestPrice(); ?></span>
+    </div>
+
+    <?php echo $this->getChildHtml('additional'); ?>
+</div>
