@@ -48,24 +48,17 @@ class Studioforty9_Schema_Block_Product_Downloadable extends Studioforty9_Schema
     }
 
     /**
-     * The lowest price available in the associated products.
+     * The lowest price available for the downloadable product
      *
      * @return float|string
      */
     public function getLowestPrice()
     {
-        $lowestPrice = $this->getProduct()->getFinalPrice();
-        foreach ($this->getDownloadableProducts() as $link) {
-            $price = (float)$this->getPrice($link);
-            if ($lowestPrice > $price) {
-                $lowestPrice = $price;
-            }
-        }
-        return $lowestPrice;
+        return $this->getProduct()->getFinalPrice();
     }
 
     /**
-     * The highest price available in the associated products.
+     * The highest price available for the downloadable product
      *
      * @return float|string
      */
@@ -73,10 +66,7 @@ class Studioforty9_Schema_Block_Product_Downloadable extends Studioforty9_Schema
     {
         $highestPrice = $this->getProduct()->getFinalPrice();
         foreach ($this->getDownloadableProducts() as $link) {
-            $price = (float)$this->getPrice($link);
-            if ($highestPrice < $price) {
-                $highestPrice = $price;
-            }
+            $highestPrice += (float)$link->getPrice();
         }
 
         return $highestPrice;
