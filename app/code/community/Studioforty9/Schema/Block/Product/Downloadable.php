@@ -13,7 +13,7 @@
 class Studioforty9_Schema_Block_Product_Downloadable extends Studioforty9_Schema_Block_Product
 {
     /**
-     * Get the products associated for this configurable giproduct.
+     * Get the downloadable products
      *
      * @return array|false
      */
@@ -31,7 +31,7 @@ class Studioforty9_Schema_Block_Product_Downloadable extends Studioforty9_Schema
             if (empty($links)) {
                 return false;
             }
-            $this->setData('downloadable_products', $products->getLinks());
+            $this->setData('downloadable_products', $links);
         }
 
         return $this->getData('downloadable_products');
@@ -50,17 +50,17 @@ class Studioforty9_Schema_Block_Product_Downloadable extends Studioforty9_Schema
     /**
      * The lowest price available for the downloadable product
      *
-     * @return float|string
+     * @return float
      */
     public function getLowestPrice()
     {
-        return $this->getProduct()->getFinalPrice();
+        return $this->formatPrice($this->getProduct()->getFinalPrice());
     }
 
     /**
      * The highest price available for the downloadable product
      *
-     * @return float|string
+     * @return float
      */
     public function getHighestPrice()
     {
@@ -69,6 +69,6 @@ class Studioforty9_Schema_Block_Product_Downloadable extends Studioforty9_Schema
             $highestPrice += (float)$link->getPrice();
         }
 
-        return $highestPrice;
+        return $this->formatPrice($highestPrice);
     }
 }

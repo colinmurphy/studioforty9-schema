@@ -32,7 +32,7 @@ You can test to check if the schema tags are correct here - [https://developers.
 
 # 3. TODO
 
-- Downloadable Products
-- Bundle Products
 - Tier Pricing
 - Reviews
+- CMS Pages
+- Category Pages

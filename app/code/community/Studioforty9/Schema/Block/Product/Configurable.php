@@ -13,7 +13,7 @@
 class Studioforty9_Schema_Block_Product_Configurable extends Studioforty9_Schema_Block_Product_Grouped
 {
     /**
-     * Get the products associated for this configurable giproduct.
+     * Get the products associated for this configurable product.
      *
      * @return array|false
      */
@@ -54,14 +54,14 @@ class Studioforty9_Schema_Block_Product_Configurable extends Studioforty9_Schema
         $lowestPrice = 0.00;
         foreach ($this->getAssociatedProducts() as $id => $attributes) {
             foreach ($attributes['options'] as $attrId => $item) {
-                $price = (float)$this->getPrice($item);
+                $price = $this->formatPrice($this->getPrice($item));
                 if ($lowestPrice == 0.00 || $lowestPrice > $price) {
                     $lowestPrice = $price;
                 }
             }
         }
 
-        return $lowestPrice;
+        return $this->formatPrice($lowestPrice);
     }
 
     /**
@@ -74,13 +74,13 @@ class Studioforty9_Schema_Block_Product_Configurable extends Studioforty9_Schema
         $highestPrice = 0.00;
         foreach ($this->getAssociatedProducts() as $id => $attributes) {
             foreach ($attributes['options'] as $attrId => $item) {
-                $price = (float)$this->getPrice($item);
+                $price = $this->formatPrice($this->getPrice($item));
                 if ($highestPrice == 0.00 || $highestPrice < $price) {
                     $highestPrice = $price;
                 }
             }
         }
 
-        return $highestPrice;
+        return $this->formatPrice($highestPrice);
     }
 }

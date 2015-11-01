@@ -39,30 +39,30 @@ class Studioforty9_Schema_Block_Product_Grouped extends Studioforty9_Schema_Bloc
     {
         $lowestPrice = 0.00;
         foreach ($this->getAssociatedProducts() as $item) {
-            $price = (float)$this->getPrice($item);
+            $price = $this->formatPrice($this->getPrice($item));
             if ($lowestPrice == 0.00 || $lowestPrice > $price) {
                 $lowestPrice = $price;
             }
         }
 
-        return $lowestPrice;
+        return $this->formatPrice($lowestPrice);
     }
 
     /**
      * The highest price available in the associated products.
      *
-     * @return float|string
+     * @return float
      */
     public function getHighestPrice()
     {
         $highestPrice = 0.00;
         foreach ($this->getAssociatedProducts() as $item) {
-            $price = (float)$this->getPrice($item);
+            $price = $this->formatPrice($this->getPrice($item));
             if ($highestPrice == 0.00 || $highestPrice < $price) {
                 $highestPrice = $price;
             }
         }
 
-        return $highestPrice;
+        return $this->formatPrice($highestPrice);
     }
 }

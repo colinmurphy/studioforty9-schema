@@ -1,0 +1,32 @@
+<?php
+/** @var $this StudioForty9_Schema_Block_Product_Bundle */
+$currency_code = $this->getCurrencyCode();
+$product = $this->getProduct();
+$price = $this->getPrice($product);
+$currency_symbol = $this->getCurrencySymbol($currency_code);
+
+?>
+<div class="product-schema hide" itemscope itemtype="http://schema.org/Product" style="display: none;">
+
+    <?php echo $this->getChildHtml('information'); ?>
+
+    <div itemprop="offers" itemscope itemtype="http://schema.org/AggregateOffer">
+
+        <span itemprop="priceCurrency" content="<?php echo $currency_code; ?>"><?php echo $currency_symbol; ?></span>
+        <?php if (0.00 != $price) : ?>
+            <span itemprop="price" content="<?php echo $price; ?>"><?php echo $price; ?></span>
+        <?php endif; ?>
+
+        <?php if ($product->isAvailable()): ?>
+            <link itemprop="availability" href="http://schema.org/InStock"/>
+        <?php else : ?>
+            <link itemprop="availability" href="http://schema.org/OutOfStock"/>
+        <?php endif; ?>
+
+        <span itemprop="lowPrice"><?php echo $currency_symbol . $this->getLowestPrice(); ?></span>
+        <?php echo $this->__('to') ?>
+        <span itemprop="highPrice"><?php echo $currency_symbol . $this->getHighestPrice(); ?></span>
+    </div>
+
+    <?php echo $this->getChildHtml('additional'); ?>
+</div>

@@ -24,6 +24,14 @@
         </reference>
     </PRODUCT_TYPE_downloadable>
 
+    <PRODUCT_TYPE_bundle>
+        <reference name="content">
+            <block type="studioforty9_schema/product_bundle" name="studioforty9.schema.product" after="-" template="studioforty9_schema/bundle.phtml">
+                <block type="core/text_list" name="studioforty9.schema.product.additional" as="additional"/>
+            </block>
+        </reference>
+    </PRODUCT_TYPE_bundle>
+
     <PRODUCT_TYPE_simple>
         <update handle="studioforty9_schema_product"/>
     </PRODUCT_TYPE_simple>
