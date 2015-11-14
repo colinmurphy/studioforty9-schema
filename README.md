@@ -26,11 +26,11 @@ In your composer file you would add the following:
          }
      }
 
-# 2. Testing
+## 2. Testing
 
 You can test to check if the schema tags are correct here - [https://developers.google.com/structured-data/testing-tool/](https://developers.google.com/structured-data/testing-tool/)
 
-# 3. TODO
+## 3. TODO
 
 - Tier Pricing
 - Reviews

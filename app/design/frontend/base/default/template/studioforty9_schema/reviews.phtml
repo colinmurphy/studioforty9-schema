@@ -1,0 +1,37 @@
+<?php
+/** @var $this Studioforty9_Schema_Block_Product_Reviews */
+$helper = Mage::helper('core');
+$aggregate = $this->getAggregateRating();
+
+if ($aggregate):
+?>
+<span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+    <span itemprop="ratingValue"><?php echo $aggregate; ?></span>
+    <span itemprop="reviewCount"><?php echo $this->getReviewTotal(); ?></span>
+</span>
+<?php
+endif;
+
+
+/** @var Mage_Review_Model_Review $review */
+while ($review = $this->getReviews()->fetchItem()) :
+    $date = strtotime($review->getCreatedAt());
+    $rating = $this->getAverageRatingByReview($review);
+    ?>
+    <div itemprop="review" itemscope itemtype="http://schema.org/Review">
+        <?php if ($rating): ?>
+        <div itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
+            <span itemprop="ratingValue"><?php echo $rating; ?></span>
+        </div>
+        <?php endif; ?>
+
+        <div itemprop="name"><?php echo $helper->escapeHtml($review->getTitle()); ?></div>
+        <div itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <div itemprop="name"><?php echo $helper->escapeHtml($review->getNickname()); ?></div>
+        </div>
+        <div itemprop="datePublished" content="<?php echo date('Y-m-d', $date); ?>"><?php echo date('F j, Y', $date); ?></div>
+        <div itemprop="reviewBody"><?php echo $helper->escapeHtml($review->getDetail()); ?></div>
+    </div>
+    <?php
+endwhile;
+?>

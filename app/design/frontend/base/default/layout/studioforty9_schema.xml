@@ -6,6 +6,7 @@
                 <block type="core/text_list" name="studioforty9.schema.product.additional" as="additional"/>
             </block>
         </reference>
+        <update handle="studioforty9_schema_product_reviews" />
     </PRODUCT_TYPE_grouped>
 
     <PRODUCT_TYPE_configurable>
@@ -14,6 +15,7 @@
                 <block type="core/text_list" name="studioforty9.schema.product.additional" as="additional"/>
             </block>
         </reference>
+        <update handle="studioforty9_schema_product_reviews" />
     </PRODUCT_TYPE_configurable>
 
     <PRODUCT_TYPE_downloadable>
@@ -22,6 +24,7 @@
                 <block type="core/text_list" name="studioforty9.schema.product.additional" as="additional"/>
             </block>
         </reference>
+        <update handle="studioforty9_schema_product_reviews" />
     </PRODUCT_TYPE_downloadable>
 
     <PRODUCT_TYPE_bundle>
@@ -30,14 +33,17 @@
                 <block type="core/text_list" name="studioforty9.schema.product.additional" as="additional"/>
             </block>
         </reference>
+        <update handle="studioforty9_schema_product_reviews" />
     </PRODUCT_TYPE_bundle>
 
     <PRODUCT_TYPE_simple>
         <update handle="studioforty9_schema_product"/>
+        <update handle="studioforty9_schema_product_reviews" />
     </PRODUCT_TYPE_simple>
 
     <PRODUCT_TYPE_virtual>
         <update handle="studioforty9_schema_product"/>
+        <update handle="studioforty9_schema_product_reviews" />
     </PRODUCT_TYPE_virtual>
 
     <studioforty9_schema_product>
@@ -47,4 +53,10 @@
             </block>
         </reference>
     </studioforty9_schema_product>
+
+    <studioforty9_schema_product_reviews>
+        <reference name="studioforty9.schema.product.additional">
+            <block type="studioforty9_schema/product_reviews" name="studioforty9.schema.product.reviews" as="reviews" template="studioforty9_schema/reviews.phtml" />
+        </reference>
+    </studioforty9_schema_product_reviews>
 </layout>
