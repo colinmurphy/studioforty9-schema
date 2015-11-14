@@ -75,16 +75,27 @@ class Studioforty9_Schema_Block_Cms_Page extends Mage_Core_Block_Template
         return $this->getPage()->getContent();
     }
 
+    /**
+     * @return string
+     */
     public function getCreatedDate()
     {
         return $this->getPage()->getCreationTime();
     }
 
+    /**
+     * @return string
+     */
     public function getModifiedDate()
     {
         return $this->getPage()->getUpdateTime();
     }
 
+    /**
+     * @param string $date
+     *
+     * @return string
+     */
     public function formatSchemaDate($date)
     {
         return $this->formatDate($date, Mage_Core_Model_Locale::FORMAT_TYPE_MEDIUM);
