@@ -2,61 +2,70 @@
 <layout version="0.1.0">
     <PRODUCT_TYPE_grouped>
         <reference name="content">
-            <block type="studioforty9_schema/product_grouped" name="studioforty9.schema.product" after="-" template="studioforty9_schema/grouped.phtml">
-                <block type="core/text_list" name="studioforty9.schema.product.additional" as="additional"/>
+            <block type="studioforty9_schema/product_grouped" name="studioforty9.schema.product" after="-" template="studioforty9_schema/product/grouped.phtml">
+                <block type="core/text_list" name="studioforty9.schema.additional" as="additional"/>
             </block>
         </reference>
-        <update handle="studioforty9_schema_product_reviews" />
+        <update handle="studioforty9_schema_product_reviews"/>
     </PRODUCT_TYPE_grouped>
 
     <PRODUCT_TYPE_configurable>
         <reference name="content">
-            <block type="studioforty9_schema/product_configurable" name="studioforty9.schema.product" after="-" template="studioforty9_schema/configurable.phtml">
-                <block type="core/text_list" name="studioforty9.schema.product.additional" as="additional"/>
+            <block type="studioforty9_schema/product_configurable" name="studioforty9.schema.product" after="-" template="studioforty9_schema/product/configurable.phtml">
+                <block type="core/text_list" name="studioforty9.schema.additional" as="additional"/>
             </block>
         </reference>
-        <update handle="studioforty9_schema_product_reviews" />
+        <update handle="studioforty9_schema_product_reviews"/>
     </PRODUCT_TYPE_configurable>
 
     <PRODUCT_TYPE_downloadable>
         <reference name="content">
-            <block type="studioforty9_schema/product_downloadable" name="studioforty9.schema.product" after="-" template="studioforty9_schema/downloadable.phtml">
-                <block type="core/text_list" name="studioforty9.schema.product.additional" as="additional"/>
+            <block type="studioforty9_schema/product_downloadable" name="studioforty9.schema.product" after="-" template="studioforty9_schema/product/downloadable.phtml">
+                <block type="core/text_list" name="studioforty9.schema.additional" as="additional"/>
             </block>
         </reference>
-        <update handle="studioforty9_schema_product_reviews" />
+        <update handle="studioforty9_schema_product_reviews"/>
     </PRODUCT_TYPE_downloadable>
 
     <PRODUCT_TYPE_bundle>
         <reference name="content">
-            <block type="studioforty9_schema/product_bundle" name="studioforty9.schema.product" after="-" template="studioforty9_schema/bundle.phtml">
-                <block type="core/text_list" name="studioforty9.schema.product.additional" as="additional"/>
+            <block type="studioforty9_schema/product_bundle" name="studioforty9.schema.product" after="-" template="studioforty9_schema/product/bundle.phtml">
+                <block type="core/text_list" name="studioforty9.schema.additional" as="additional"/>
             </block>
         </reference>
-        <update handle="studioforty9_schema_product_reviews" />
+        <update handle="studioforty9_schema_product_reviews"/>
     </PRODUCT_TYPE_bundle>
 
     <PRODUCT_TYPE_simple>
         <update handle="studioforty9_schema_product"/>
-        <update handle="studioforty9_schema_product_reviews" />
+        <update handle="studioforty9_schema_product_reviews"/>
     </PRODUCT_TYPE_simple>
 
     <PRODUCT_TYPE_virtual>
         <update handle="studioforty9_schema_product"/>
-        <update handle="studioforty9_schema_product_reviews" />
+        <update handle="studioforty9_schema_product_reviews"/>
     </PRODUCT_TYPE_virtual>
+
+    <cms_page_view>
+        <reference name="content">
+            <block type="studioforty9_schema/cms_page" name="studioforty9_schema_page" template="studioforty9_schema/cms/page.phtml" after="-">
+                <block type="core/text_list" name="studioforty9.schema.additional" as="additional"/>
+            </block>
+        </reference>
+    </cms_page_view>
 
     <studioforty9_schema_product>
         <reference name="content">
-            <block type="studioforty9_schema/product" name="studioforty9.schema.product" after="-" template="studioforty9_schema/simple.phtml">
-                <block type="core/text_list" name="studioforty9.schema.product.additional" as="additional"/>
+            <block type="studioforty9_schema/product" name="studioforty9.schema.product" after="-" template="studioforty9_schema/product/simple.phtml">
+                <block type="core/text_list" name="studioforty9.schema.additional" as="additional"/>
             </block>
         </reference>
     </studioforty9_schema_product>
 
     <studioforty9_schema_product_reviews>
-        <reference name="studioforty9.schema.product.additional">
-            <block type="studioforty9_schema/product_reviews" name="studioforty9.schema.product.reviews" as="reviews" template="studioforty9_schema/reviews.phtml" />
+        <reference name="studioforty9.schema.additional">
+            <block type="studioforty9_schema/product_reviews" name="studioforty9.schema.product.reviews" as="reviews" template="studioforty9_schema/product/reviews.phtml"/>
         </reference>
     </studioforty9_schema_product_reviews>
+
 </layout>

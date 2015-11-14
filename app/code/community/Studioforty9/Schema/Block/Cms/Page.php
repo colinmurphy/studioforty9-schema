@@ -1,16 +1,16 @@
 <?php
 
 /**
- * Schema Block
+ * Schema CMS Page Block
  *
- * Class Studioforty9_Schema_Block_Product
+ * Class Studioforty9_Schema_Block_Cms_Page
  *
  * @category  StudioForty9
  * @package   Schema
  * @author    Colin Murphy <colin@studioforty9.com>
  * @copyright 2015 StudioForty9
  */
-class Studioforty9_Schema_Block_Product extends Mage_Core_Block_Template
+class Studioforty9_Schema_Block_Cms_Page extends Mage_Core_Block_Template
 {
     /**
      * Sets the product
@@ -19,74 +19,75 @@ class Studioforty9_Schema_Block_Product extends Mage_Core_Block_Template
      */
     protected function _beforeToHtml()
     {
-        $product = $this->getProduct();
-        if (!$product) {
+        $page = $this->getPage();
+        if (!$page) {
             $this->setTemplate('');
-
             return $this;
         }
-
-        if (!$this->getChild('information')) {
-            /** @var Studioforty9_Schema_Block_Product_Information $block */
-            $block = Mage::getBlockSingleton('studioforty9_schema/product_information');
-            $block->setProduct($product);
-            $block->setTemplate('studioforty9_schema/includes/information.phtml');
-            $this->setChild('information', $block);
-        }
-
         return $this;
     }
 
     /**
-     * Gets a product
+     * Gets a page
      *
-     * @return Mage_Catalog_Model_Product|false
+     * @return Mage_Cms_Model_Page|false
      */
-    public function getProduct()
+    public function getPage()
     {
-        if ($this->hasData('product')) {
-            return $this->getData('product');
+        if ($this->hasData('page')) {
+            return $this->getData('page');
         }
-        $this->setData('product', Mage::registry('current_product'));
+        $this->setData('page', Mage::getSingleton('cms/page'));
 
-        return $this->getData('product');
+        return $this->getData('page');
     }
 
     /**
-     * @param mixed $item
+     * Gets the page title
      *
-     * @return float
+     * @return string
      */
-    public function getPrice($item)
+    public function getTitle()
     {
-        return $this->formatPrice($item->getPrice());
+        $title = $this->getPage()->getTitle();
+        return Mage::helper('core/string')->escapeHtml($title);
     }
 
     /**
-     * @param Mage_Catalog_Model_Product $product
+     * Gets the page headline
      *
-     * @return float
+     * @return string|false
      */
-    public function formatPrice($price)
+    public function getHeadline()
     {
-        return number_format($price, 2, '.', '');
+        $title = $this->getPage()->getContentHeading();
+        if (!$title) {
+            return false;
+        }
+        return Mage::helper('core/string')->escapeHtml($title);
     }
 
     /**
      * @return string
      */
-    public function getCurrencyCode()
+    public function getDescription()
     {
-        return Mage::app()->getStore()->getCurrentCurrencyCode();
+        return $this->getPage()->getContent();
     }
 
-    /**
-     * @param $currencyCode
-     *
-     * @return string
-     */
-    public function getCurrencySymbol($currencyCode)
+    public function getCreatedDate()
     {
-        return Mage::app()->getLocale()->currency($currencyCode)->getSymbol();
+        return $this->getPage()->getCreationTime();
     }
+
+    public function getModifiedDate()
+    {
+        return $this->getPage()->getUpdateTime();
+    }
+
+    public function formatSchemaDate($date)
+    {
+        return $this->formatDate($date, Mage_Core_Model_Locale::FORMAT_TYPE_MEDIUM);
+    }
+
 }

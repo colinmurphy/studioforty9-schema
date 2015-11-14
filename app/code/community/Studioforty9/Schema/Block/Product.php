@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Schema Block
+ * Schema Product Block
  *
  * Class Studioforty9_Schema_Block_Product
  *
