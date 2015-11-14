@@ -5,5 +5,6 @@ app/design/frontend/base/default/template/studioforty9_schema/includes/         
 app/design/frontend/base/default/template/studioforty9_schema/simple.phtml          app/design/frontend/base/default/template/studioforty9_schema/simple.phtml
 app/design/frontend/base/default/template/studioforty9_schema/downloadable.phtml    app/design/frontend/base/default/template/studioforty9_schema/downloadable.phtml
 app/design/frontend/base/default/template/studioforty9_schema/bundle.phtml          app/design/frontend/base/default/template/studioforty9_schema/bundle.phtml
+app/design/frontend/base/default/template/studioforty9_schema/reviews.phtml          app/design/frontend/base/default/template/studioforty9_schema/reviews.phtml
 app/etc/modules/Studioforty9_Schema.xml                                             app/etc/modules/Studioforty9_Schema.xml
 app/code/community/Studioforty9/Schema/                                             app/code/community/Studioforty9/Schema/
