@@ -1,6 +1,6 @@
 # StudioForty9 Magento Schema Module
 
-This will add hidden schema tags to your product pages.
+This will add hidden schema tags to your product, category, cms and contact pages.
 
 ## 1. Installation
 
