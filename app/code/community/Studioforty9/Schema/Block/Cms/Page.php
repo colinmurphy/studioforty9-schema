@@ -47,7 +47,7 @@ class Studioforty9_Schema_Block_Cms_Page extends Mage_Core_Block_Template
      *
      * @return string
      */
-    public function getTitle()
+    public function getName()
     {
         $title = $this->getPage()->getTitle();
         return Mage::helper('core/string')->escapeHtml($title);
@@ -89,16 +89,6 @@ class Studioforty9_Schema_Block_Cms_Page extends Mage_Core_Block_Template
     public function getModifiedDate()
     {
         return $this->getPage()->getUpdateTime();
-    }
-
-    /**
-     * @param string $date
-     *
-     * @return string
-     */
-    public function formatSchemaDate($date)
-    {
-        return $this->formatDate($date, Mage_Core_Model_Locale::FORMAT_TYPE_MEDIUM);
     }
 
 }

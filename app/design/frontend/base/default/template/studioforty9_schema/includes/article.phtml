@@ -1,0 +1,24 @@
+<?php
+$image = $this->getImage();
+$description = $this->getDescription();
+$headline = $this->getHeadline();
+$created = $this->getCreatedDate();
+$modified = $this->getModifiedDate();
+$helper = Mage::helper('studioforty9_schema');
+?>
+<div class="product-schema hide" itemscope itemtype="http://schema.org/Article" style="display: none;">
+    <span itemprop="name"><?php echo $this->getName(); ?></span>
+    <?php if ($headline): ?>
+    <span itemprop="headline"><?php echo $headline; ?></span>
+    <?php endif; ?>
+    <?php if ($description): ?>
+    <span itemprop="description"><?php echo $description; ?></span>
+    <?php endif; ?>
+    <?php if ($image): ?>
+    <img itemprop="image" src="<?php echo $image; ?>" />
+    <?php endif; ?>
+    <time datetime="<?php echo $created; ?>" itemprop="datePublished"><?php echo $helper->formatSchemaDate($created); ?></time>
+    <time datetime="<?php echo $created; ?>" itemprop="dateCreated"><?php echo $helper->formatSchemaDate($created); ?></time>
+    <time datetime="<?php echo $modified; ?>" itemprop="dateModified"><?php echo $helper->formatSchemaDate($modified); ?></time>
+    <?php echo $this->getChildHtml('additional'); ?>
+</div>

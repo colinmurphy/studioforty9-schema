@@ -46,6 +46,14 @@
         <update handle="studioforty9_schema_product_reviews"/>
     </PRODUCT_TYPE_virtual>
 
+    <catalog_category_view>
+        <reference name="content">
+            <block type="studioforty9_schema/category" name="studioforty9_schema_category" template="studioforty9_schema/includes/article.phtml" after="-">
+                <block type="core/text_list" name="studioforty9.schema.additional" as="additional"/>
+            </block>
+        </reference>
+    </catalog_category_view>
+
     <cms_index_index>
         <update handle="studioforty9_schema_page"/>
     </cms_index_index>
@@ -78,7 +86,7 @@
 
     <studioforty9_schema_page>
         <reference name="content">
-            <block type="studioforty9_schema/cms_page" name="studioforty9_schema_page" template="studioforty9_schema/cms/page.phtml" after="-">
+            <block type="studioforty9_schema/cms_page" name="studioforty9_schema_page" template="studioforty9_schema/includes/article.phtml" after="-">
                 <block type="core/text_list" name="studioforty9.schema.additional" as="additional"/>
             </block>
         </reference>

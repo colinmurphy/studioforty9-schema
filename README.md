@@ -30,7 +30,6 @@ In your composer file you would add the following:
 
 You can test to check if the schema tags are correct here - [https://developers.google.com/structured-data/testing-tool/](https://developers.google.com/structured-data/testing-tool/)
 
-## 3. TODO
+## 3. Contact Page
 
-- Category Pages
-- Tier Pricing
+Information for the contact page is taken from the store information in the System Configuration.
