@@ -32,7 +32,5 @@ You can test to check if the schema tags are correct here - [https://developers.
 
 ## 3. TODO
 
-- CMS Pages
-- Contact Page
 - Category Pages
 - Tier Pricing

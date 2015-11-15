@@ -1,0 +1,43 @@
+<?php
+/** @var $this Studioforty9_Schema_Block_Contacts_Page */
+$name = $this->getName();
+$address = $this->getAddress();
+$locality = $this->getLocality();
+$phone = $this->getPhone();
+$email = $this->getEmail();
+$openingHours = $this->getHours();
+$postalCode = $this->getPostalCode();
+$fax = $this->getFax();
+?>
+<div itemscope itemtype="http://schema.org/Organization">
+    <?php if ($name): ?>
+        <span itemprop="name"><?php echo $name; ?></span>
+    <?php endif; ?>
+    <?php if ($address || $postalCode || $locality): ?>
+        <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+            <?php if ($address): ?>
+                <span itemprop="streetAddress"><?php echo $address; ?></span>
+            <?php endif; ?>
+
+            <?php if ($postalCode): ?>
+                <span itemprop="postalCode"><?php echo $postalCode; ?></span>
+            <?php endif; ?>
+
+            <?php if ($locality): ?>
+                <span itemprop="addressLocality"><?php echo $locality; ?></span>
+            <?php endif; ?>
+        </div>
+    <?php endif; ?>
+
+    <?php if ($phone): ?>
+        <span itemprop="telephone"><?php echo $phone; ?></span>
+    <?php endif; ?>
+
+    <?php if ($fax): ?>
+        <span itemprop="faxNumber"><?php echo $fax; ?></span>
+    <?php endif; ?>
+
+    <?php if ($email): ?>
+        <span itemprop="email"><?php echo $email; ?></span>
+    <?php endif; ?>
+</div>
