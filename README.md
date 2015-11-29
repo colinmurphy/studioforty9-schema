@@ -22,7 +22,9 @@ In your composer file you would add the following:
              "colinmurphy/studioforty9-schema": "dev-master"
          },
          "extra": {
-             "magento-root-dir": "./"
+            "magento-deploystrategy": "copy",
+            "magento-force": true,
+            "magento-root-dir": "./"
          }
      }
 
