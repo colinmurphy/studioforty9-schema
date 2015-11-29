@@ -4,6 +4,8 @@ This will add hidden schema tags to your product, category, cms and contact page
 
 ## 1. Installation
 
+### 1.1. Composer
+
 In your composer file you would add the following:
 
      {
@@ -27,6 +29,13 @@ In your composer file you would add the following:
             "magento-root-dir": "./"
          }
      }
+
+
+## 1.2. Modman
+    
+    modman init
+    modman clone git@github.com:colinmurphy/studioforty9-schema.git
+
 
 ## 2. Testing
 
