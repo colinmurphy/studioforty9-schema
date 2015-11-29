@@ -31,7 +31,7 @@ In your composer file you would add the following:
      }
 
 
-## 1.2. Modman
+### 1.2. Modman
     
     modman init
     modman clone git@github.com:colinmurphy/studioforty9-schema.git
