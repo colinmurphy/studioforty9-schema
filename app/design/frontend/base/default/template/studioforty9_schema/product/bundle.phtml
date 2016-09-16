@@ -23,9 +23,9 @@ $currency_symbol = $this->getCurrencySymbol($currency_code);
             <link itemprop="availability" href="http://schema.org/OutOfStock"/>
         <?php endif; ?>
 
-        <span itemprop="lowPrice"><?php echo $currency_symbol . $this->getLowestPrice(); ?></span>
+        <span itemprop="lowPrice"><?php echo $this->getLowestPrice(); ?></span>
         <?php echo $this->__('to') ?>
-        <span itemprop="highPrice"><?php echo $currency_symbol . $this->getHighestPrice(); ?></span>
+        <span itemprop="highPrice"><?php echo $this->getHighestPrice(); ?></span>
     </div>
 
     <?php echo $this->getChildHtml('additional'); ?>
