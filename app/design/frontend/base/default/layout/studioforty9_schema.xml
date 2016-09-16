@@ -36,15 +36,10 @@
         <update handle="studioforty9_schema_product_reviews"/>
     </PRODUCT_TYPE_bundle>
 
-    <PRODUCT_TYPE_simple>
+    <catalog_product_view>
         <update handle="studioforty9_schema_product"/>
         <update handle="studioforty9_schema_product_reviews"/>
-    </PRODUCT_TYPE_simple>
-
-    <PRODUCT_TYPE_virtual>
-        <update handle="studioforty9_schema_product"/>
-        <update handle="studioforty9_schema_product_reviews"/>
-    </PRODUCT_TYPE_virtual>
+    </catalog_product_view>
 
     <catalog_category_view>
         <reference name="content">
