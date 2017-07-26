@@ -8,7 +8,7 @@ $email = $this->getEmail();
 $postalCode = $this->getPostalCode();
 $fax = $this->getFax();
 ?>
-<div itemscope itemtype="http://schema.org/Organization">
+<div itemscope itemtype="http://schema.org/Organization" style="display: none;">
     <?php if ($name): ?>
         <span itemprop="name"><?php echo $name; ?></span>
     <?php endif; ?>
