@@ -7,12 +7,17 @@ $currency_symbol = $this->getCurrencySymbol($currency_code);
 <div class="product-schema hide" itemscope itemtype="http://schema.org/Product" style="display: none;">
 
     <?php echo $this->getChildHtml('information'); ?>
+
     <div itemprop="offers" itemscope itemtype="http://schema.org/AggregateOffer">
+        <span itemprop="priceCurrency" content="<?php echo $currency_code; ?>"><?php echo $currency_symbol; ?></span>
         <?php
         /** @var array $item */
         foreach ($products as $id => $attributes) :
             foreach ($attributes['options'] as $attrId => $item) :
 
+                if (empty($item['products'])) {
+                    continue;
+                }
                 $product = Mage::getModel('catalog/product')->getCollection()
                     ->addAttributeToFilter('entity_id', $item['products'])
                     ->addAttributeToSelect(array('name', 'url_key'))->getFirstItem();
